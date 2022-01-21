@@ -6,11 +6,13 @@ import com.pinhobrunodev.user.enums.ActionType;
 import com.pinhobrunodev.user.mapper.UserModelMapper;
 import com.pinhobrunodev.user.repositories.UserRepository;
 import com.pinhobrunodev.user.services.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.RoutingKafkaTemplate;
 import org.springframework.stereotype.Service;
 
+@Log4j2
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -29,6 +31,7 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(userModel, userProducerDto);
         userProducerDto.setActionType(ActionType.CREATE.toString());
         routingKafkaTemplate.send("user-topic", userProducerDto);
+        log.info("Message send : {}",userProducerDto.toString());
         return userModel.convertToUserDto();
     }
 

@@ -3,3 +3,6 @@ server:
 spring:
   kafka:
     bootstrap-servers: localhost:29092
+  data:
+    mongodb:
+      uri: mongodb://pinhobrunodev:123@localhost:27017/mongo-course?authSource=admin
