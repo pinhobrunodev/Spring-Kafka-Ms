@@ -1,5 +1,6 @@
 package com.pinhobrunodev.course.dtos;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionDto {
-
-
-    private String courseId;
+    public interface CourseUserView {
+        public static interface SubscribeUser {
+        }
+    }
+    @JsonView(SubscriptionDto.CourseUserView.SubscribeUser.class)
     private String userId;
 
 

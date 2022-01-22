@@ -6,4 +6,5 @@ public interface CourseService {
 
 
     CourseDto saveCourse(CourseDto courseDto);
+    void saveSubscriptionUserInCourse(String courseId,String userId);
 }
