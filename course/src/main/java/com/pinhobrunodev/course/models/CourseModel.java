@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -25,6 +26,7 @@ public class CourseModel implements Serializable {
     private String id;
     private String courseName;
     private String courseDescription;
+    @CreatedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy hh:MM:ss",timezone = "UTC")
     private Instant criadoEm;
     @LastModifiedDate
